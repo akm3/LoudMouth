@@ -1,0 +1,22 @@
+# macOS and Finder metadata
+.DS_Store
+
+# Local build products and release staging
+work/
+build/
+DerivedData/
+*.app
+*.dmg
+*.zip
+
+# Xcode user-specific state
+xcuserdata/
+*.xcuserstate
+
+# Swift build caches
+.build/
+.swiftpm/
+
+# Editor leftovers
+*.swp
+*.orig

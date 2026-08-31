@@ -1,0 +1,289 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000001 /* LoudMouthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000001 /* LoudMouthApp.swift */; };
+		A10000000000000000000002 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000002 /* AppModel.swift */; };
+		A10000000000000000000003 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000003 /* AppSettings.swift */; };
+		A10000000000000000000004 /* LoudnessProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000004 /* LoudnessProcessor.swift */; };
+		A10000000000000000000005 /* AudioInputDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000005 /* AudioInputDevice.swift */; };
+		A10000000000000000000006 /* AudioCaptureEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000006 /* AudioCaptureEngine.swift */; };
+		A10000000000000000000007 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000007 /* MenuBarView.swift */; };
+		A10000000000000000000008 /* LevelOrb.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000008 /* LevelOrb.swift */; };
+		A10000000000000000000009 /* LoudAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000009 /* LoudAlertController.swift */; };
+		A1000000000000000000000A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000A /* SettingsView.swift */; };
+		A1000000000000000000000B /* LoudnessProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000000D /* LoudnessProcessorTests.swift */; };
+		A1000000000000000000000C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000010 /* PrivacyInfo.xcprivacy */; };
+		A1000000000000000000000D /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000013 /* Onboarding.swift */; };
+		A1000000000000000000000E /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000014 /* AppIcon.icns */; };
+		A1000000000000000000000F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000015 /* Assets.xcassets */; };
+		A10000000000000000000010 /* HeadphoneCallMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000016 /* HeadphoneCallMonitor.swift */; };
+		A10000000000000000000011 /* HeadphoneCallMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000017 /* HeadphoneCallMonitorTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D10000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E10000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C10000000000000000000001;
+			remoteInfo = LoudMouth;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B10000000000000000000001 /* LoudMouthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoudMouthApp.swift; sourceTree = "<group>"; };
+		B10000000000000000000002 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		B10000000000000000000003 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		B10000000000000000000004 /* LoudnessProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoudnessProcessor.swift; sourceTree = "<group>"; };
+		B10000000000000000000005 /* AudioInputDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioInputDevice.swift; sourceTree = "<group>"; };
+		B10000000000000000000006 /* AudioCaptureEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCaptureEngine.swift; sourceTree = "<group>"; };
+		B10000000000000000000007 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		B10000000000000000000008 /* LevelOrb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOrb.swift; sourceTree = "<group>"; };
+		B10000000000000000000009 /* LoudAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoudAlertController.swift; sourceTree = "<group>"; };
+		B1000000000000000000000A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B1000000000000000000000B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1000000000000000000000C /* LoudMouth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LoudMouth.entitlements; sourceTree = "<group>"; };
+		B1000000000000000000000D /* LoudnessProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoudnessProcessorTests.swift; sourceTree = "<group>"; };
+		B1000000000000000000000E /* LoudMouth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoudMouth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1000000000000000000000F /* LoudMouthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoudMouthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10000000000000000000010 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		B10000000000000000000011 /* verify_privacy.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = verify_privacy.sh; sourceTree = "<group>"; };
+		B10000000000000000000012 /* audit_release.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = audit_release.sh; sourceTree = "<group>"; };
+		B10000000000000000000013 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		B10000000000000000000014 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+		B10000000000000000000015 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B10000000000000000000016 /* HeadphoneCallMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadphoneCallMonitor.swift; sourceTree = "<group>"; };
+		B10000000000000000000017 /* HeadphoneCallMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadphoneCallMonitorTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F10000000000000000000001 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		F10000000000000000000002 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		G10000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				G10000000000000000000002 /* LoudMouth */,
+				G10000000000000000000006 /* LoudMouthTests */,
+				G10000000000000000000008 /* Scripts */,
+				G10000000000000000000007 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		G10000000000000000000002 /* LoudMouth */ = {
+			isa = PBXGroup;
+			children = (
+				B10000000000000000000001 /* LoudMouthApp.swift */,
+				B10000000000000000000013 /* Onboarding.swift */,
+				B10000000000000000000002 /* AppModel.swift */,
+				B10000000000000000000003 /* AppSettings.swift */,
+				G10000000000000000000003 /* Audio */,
+				G10000000000000000000004 /* UI */,
+				G10000000000000000000005 /* Resources */,
+				B1000000000000000000000C /* LoudMouth.entitlements */,
+			);
+			path = LoudMouth;
+			sourceTree = "<group>";
+		};
+		G10000000000000000000003 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				B10000000000000000000004 /* LoudnessProcessor.swift */,
+				B10000000000000000000005 /* AudioInputDevice.swift */,
+				B10000000000000000000006 /* AudioCaptureEngine.swift */,
+				B10000000000000000000016 /* HeadphoneCallMonitor.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		G10000000000000000000004 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B10000000000000000000007 /* MenuBarView.swift */,
+				B10000000000000000000008 /* LevelOrb.swift */,
+				B10000000000000000000009 /* LoudAlertController.swift */,
+				B1000000000000000000000A /* SettingsView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		G10000000000000000000005 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B1000000000000000000000B /* Info.plist */,
+				B10000000000000000000010 /* PrivacyInfo.xcprivacy */,
+				B10000000000000000000014 /* AppIcon.icns */,
+				B10000000000000000000015 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		G10000000000000000000006 /* LoudMouthTests */ = {
+			isa = PBXGroup;
+			children = (
+				B1000000000000000000000D /* LoudnessProcessorTests.swift */,
+				B10000000000000000000017 /* HeadphoneCallMonitorTests.swift */,
+			);
+			path = LoudMouthTests;
+			sourceTree = "<group>";
+		};
+		G10000000000000000000007 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1000000000000000000000E /* LoudMouth.app */,
+				B1000000000000000000000F /* LoudMouthTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		G10000000000000000000008 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				B10000000000000000000011 /* verify_privacy.sh */,
+				B10000000000000000000012 /* audit_release.sh */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C10000000000000000000001 /* LoudMouth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = H10000000000000000000002 /* Build configuration list for PBXNativeTarget "LoudMouth" */;
+			buildPhases = (
+				F10000000000000000000007 /* Verify Privacy Boundary */,
+				F10000000000000000000003 /* Sources */,
+				F10000000000000000000001 /* Frameworks */,
+				F10000000000000000000005 /* Resources */,
+			);
+			buildRules = ();
+			dependencies = ();
+			name = LoudMouth;
+			productName = LoudMouth;
+			productReference = B1000000000000000000000E /* LoudMouth.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C10000000000000000000002 /* LoudMouthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = H10000000000000000000003 /* Build configuration list for PBXNativeTarget "LoudMouthTests" */;
+			buildPhases = (
+				F10000000000000000000004 /* Sources */,
+				F10000000000000000000002 /* Frameworks */,
+				F10000000000000000000006 /* Resources */,
+			);
+			buildRules = ();
+			dependencies = (D10000000000000000000002 /* PBXTargetDependency */,);
+			name = LoudMouthTests;
+			productName = LoudMouthTests;
+			productReference = B1000000000000000000000F /* LoudMouthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E10000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2660;
+				LastUpgradeCheck = 2660;
+				TargetAttributes = {
+					C10000000000000000000001 = {CreatedOnToolsVersion = 26.6;};
+					C10000000000000000000002 = {CreatedOnToolsVersion = 26.6; TestTargetID = C10000000000000000000001;};
+				};
+			};
+			buildConfigurationList = H10000000000000000000001 /* Build configuration list for PBXProject "LoudMouth" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (en, Base,);
+			mainGroup = G10000000000000000000001;
+			productRefGroup = G10000000000000000000007 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (C10000000000000000000001 /* LoudMouth */, C10000000000000000000002 /* LoudMouthTests */,);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F10000000000000000000005 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (A1000000000000000000000C /* PrivacyInfo.xcprivacy in Resources */, A1000000000000000000000E /* AppIcon.icns in Resources */, A1000000000000000000000F /* Assets.xcassets in Resources */,); runOnlyForDeploymentPostprocessing = 0; };
+		F10000000000000000000006 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F10000000000000000000007 /* Verify Privacy Boundary */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = ();
+			inputPaths = ();
+			name = "Verify Privacy Boundary";
+			outputPaths = ();
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "\"${SRCROOT}/scripts/verify_privacy.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F10000000000000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000001 /* LoudMouthApp.swift in Sources */,
+				A10000000000000000000002 /* AppModel.swift in Sources */,
+				A10000000000000000000003 /* AppSettings.swift in Sources */,
+				A10000000000000000000004 /* LoudnessProcessor.swift in Sources */,
+				A10000000000000000000005 /* AudioInputDevice.swift in Sources */,
+				A10000000000000000000006 /* AudioCaptureEngine.swift in Sources */,
+				A10000000000000000000007 /* MenuBarView.swift in Sources */,
+				A10000000000000000000008 /* LevelOrb.swift in Sources */,
+				A10000000000000000000009 /* LoudAlertController.swift in Sources */,
+				A1000000000000000000000A /* SettingsView.swift in Sources */,
+				A1000000000000000000000D /* Onboarding.swift in Sources */,
+				A10000000000000000000010 /* HeadphoneCallMonitor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F10000000000000000000004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000000000000000000000B /* LoudnessProcessorTests.swift in Sources */,
+				A10000000000000000000011 /* HeadphoneCallMonitorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D10000000000000000000002 /* PBXTargetDependency */ = {isa = PBXTargetDependency; target = C10000000000000000000001 /* LoudMouth */; targetProxy = D10000000000000000000001 /* PBXContainerItemProxy */; };
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		I10000000000000000000001 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {CLANG_ENABLE_MODULES = YES; COPY_PHASE_STRIP = NO; DEBUG_INFORMATION_FORMAT = dwarf; ENABLE_TESTABILITY = YES; GCC_OPTIMIZATION_LEVEL = 0; MACOSX_DEPLOYMENT_TARGET = 14.0; ONLY_ACTIVE_ARCH = YES; SDKROOT = macosx; SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)"; SWIFT_OPTIMIZATION_LEVEL = "-Onone";}; name = Debug;};
+		I10000000000000000000002 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {CLANG_ENABLE_MODULES = YES; COPY_PHASE_STRIP = NO; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_COMPILATION_MODE = wholemodule;}; name = Release;};
+		I10000000000000000000003 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_ENTITLEMENTS = LoudMouth/LoudMouth.entitlements; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 17; ENABLE_HARDENED_RUNTIME = YES; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = LoudMouth/Resources/Info.plist; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks"; MARKETING_VERSION = 0.1.16; PRODUCT_BUNDLE_IDENTIFIER = app.loudmouth.mac; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0;}; name = Debug;};
+		I10000000000000000000004 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_ENTITLEMENTS = LoudMouth/LoudMouth.entitlements; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 17; ENABLE_HARDENED_RUNTIME = YES; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = LoudMouth/Resources/Info.plist; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks"; MARKETING_VERSION = 0.1.16; PRODUCT_BUNDLE_IDENTIFIER = app.loudmouth.mac; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0;}; name = Release;};
+		I10000000000000000000005 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {BUNDLE_LOADER = "$(TEST_HOST)"; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks"; PRODUCT_BUNDLE_IDENTIFIER = app.loudmouth.mac.tests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoudMouth.app/Contents/MacOS/LoudMouth";}; name = Debug;};
+		I10000000000000000000006 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {BUNDLE_LOADER = "$(TEST_HOST)"; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks"; PRODUCT_BUNDLE_IDENTIFIER = app.loudmouth.mac.tests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoudMouth.app/Contents/MacOS/LoudMouth";}; name = Release;};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		H10000000000000000000001 /* Build configuration list for PBXProject "LoudMouth" */ = {isa = XCConfigurationList; buildConfigurations = (I10000000000000000000001 /* Debug */, I10000000000000000000002 /* Release */,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;};
+		H10000000000000000000002 /* Build configuration list for PBXNativeTarget "LoudMouth" */ = {isa = XCConfigurationList; buildConfigurations = (I10000000000000000000003 /* Debug */, I10000000000000000000004 /* Release */,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;};
+		H10000000000000000000003 /* Build configuration list for PBXNativeTarget "LoudMouthTests" */ = {isa = XCConfigurationList; buildConfigurations = (I10000000000000000000005 /* Debug */, I10000000000000000000006 /* Release */,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;};
+/* End XCConfigurationList section */
+	};
+	rootObject = E10000000000000000000001 /* Project object */;
+}
