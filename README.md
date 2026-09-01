@@ -1,84 +1,107 @@
 # LoudMouth
 
-LoudMouth is a native macOS menu-bar app that learns a person’s natural speaking
-level and gives a quiet visual reminder when headphones make them speak louder.
+LoudMouth is a private, native macOS menu-bar app that helps you notice when
+headphones are making you speak more loudly than usual.
 
-## Product principles
+It learns your natural voice level during a short calibration, then animates a
+small mouth in the menu bar: green when you are quiet, yellow when you are
+getting louder, and red when you have crossed your personal threshold.
 
-- **Relative, not pretend-precise:** LoudMouth reports change from a personal
-  calibration in dBFS. It does not claim that an uncalibrated Mac microphone is
-  a certified dBA meter.
-- **Private by construction:** Audio is analyzed in memory with Apple’s
-  AVFoundation framework. It is never written to disk or sent
-  over a network.
-- **Native on purpose:** The interface uses SwiftUI inside a direct AppKit
-  status item and popover, plus a small AppKit panel for the non-activating
-  on-screen reminder. There are no cross-platform UI layers.
-- **Energy-aware by default:** Microphone capture stays stopped until headphones
-  and another app's active microphone input indicate that a call has begun.
+> LoudMouth measures change from your own baseline in dBFS. It is deliberately
+> not presented as a certified sound-pressure-level or dBA meter.
 
-## Run locally
+## What it does
+
+- Uses the Mac’s microphone to measure live voice level on-device.
+- Guides you through an eight-second personal calibration.
+- Provides a menu-bar status icon and a brief visual reminder when you are too
+  loud.
+- Lets you adjust sensitivity so yellow and red arrive sooner or later.
+- Prefers the Mac’s built-in microphone, even while headphones are connected.
+- Sleeps when you are not on a headphone call, then resumes monitoring when a
+  local call-activity signal is present.
+- Can launch automatically when you sign in to your Mac.
+
+## Privacy, by construction
+
+LoudMouth is designed to make the smallest possible privacy claim and enforce
+it in the shipped app:
+
+- Microphone samples are measured only in volatile memory and immediately
+  discarded.
+- Audio is never recorded, saved, transcribed, uploaded, or sent over a
+  network.
+- There are no accounts, analytics, ads, crash-reporting SDKs, or third-party
+  dependencies.
+- Headphone-call detection reads only local Core Audio device, route, and
+  activity metadata. It never opens, records, or inspects another app’s call
+  audio.
+- The app sandbox grants microphone input and nothing else: no incoming or
+  outgoing network entitlement, and no user-file access entitlement.
+- The only saved values are your numeric dBFS calibration baseline and app
+  preferences in `UserDefaults`.
+- `PrivacyInfo.xcprivacy` declares zero tracking and zero collected data types.
+
+Every Xcode build runs `scripts/verify_privacy.sh`, which fails if prohibited
+networking, recording, transcription, analytics APIs, or entitlements appear.
+`scripts/audit_release.sh` audits the final signed app’s entitlements, linked
+frameworks, symbols, privacy manifest, and signature.
+
+## Get started
 
 1. Open `LoudMouth.xcodeproj` in Xcode.
-2. Select the **LoudMouth** scheme and **My Mac** destination.
-3. Run and follow the native welcome window to grant microphone access and
-   complete the eight-second calibration.
-4. After setup, click the mouth in the menu bar to pause, recalibrate, or adjust
-   LoudMouth. Double-clicking the app again reopens the welcome window.
+2. Choose the **LoudMouth** scheme and **My Mac**, then run the app.
+3. Grant microphone access and complete the eight-second voice calibration.
+4. Click the mouth in the menu bar to see your current level, pause monitoring,
+   recalibrate, or open Settings.
 
-The app prefers the Mac’s built-in microphone, even when headphones are the
-default input. This can be changed in Settings.
+LoudMouth’s Settings window is intentionally compact:
 
-After calibration, LoudMouth sleeps by default whenever no headphone call is
-active. Its event-driven Core Audio observer reads only device type, route, and
-process activity flags; it never receives call audio. Monitoring starts as soon
-as a qualifying call is detected and stops 15 seconds after the call activity
-ends. **Monitor Now** provides a manual override, and the Energy setting can
-restore continuous monitoring if desired.
+- **Quit LoudMouth** is in the header for quick access.
+- **Launch LoudMouth at login** uses macOS’s native login-item service. It
+  reflects the actual macOS registration state rather than a saved preference.
+- **Startup & energy** controls the headphone-call-aware monitoring mode.
+- **Voice reminders** controls sensitivity: moving right reaches yellow and red
+  sooner.
+- **Microphone & calibration** shows the current input and lets you reset your
+  baseline.
+- The full privacy guarantee stays visible at the bottom of the window.
 
-Calibration uses a monotonic eight-second timer, so its progress remains
-accurate even if Core Audio changes buffer sizes or briefly stalls delivery.
-The setup screen shows the live dBFS input level, accepts genuinely quiet mic
-signals, and reports separately when no audio frames or no signal arrive.
-Microphone startup runs on a dedicated control queue and has a four-second
-watchdog, so a stalled audio-device connection cannot freeze the interface.
-LoudMouth binds the selected microphone through AVFoundation's capture-device
-API and receives PCM sample buffers directly. This avoids changes to the
-system's temporary aggregate audio device from stopping the meter.
+## Energy-aware monitoring
 
-Only one LoudMouth version runs at a time. Opening a newer build stops older
-copies before they can compete for the microphone; opening an older or matching
-copy brings the already-running version forward.
+By default, LoudMouth does not keep the microphone open all day. It waits until
+headphones are connected and another app’s active microphone input indicates a
+call. It stops capture when that call activity ends, with a short grace period
+to avoid flapping between states.
 
-## Privacy architecture
+This check is event-driven and local. LoudMouth reads only device type, route,
+and process activity flags—not call audio. **Monitor Now** is available as a
+manual override, and the Energy setting can restore continuous monitoring.
 
-LoudMouth's privacy promise is enforced by the shipped app, not only by policy:
+## Calibration and reliability
 
-- Microphone buffers are measured in volatile memory and immediately released.
-- A lightweight local acoustic gate focuses the meter on voice-like sound; no
-  machine-learning model or transcription is used.
-- Headphone-call detection uses local Core Audio metadata callbacks only. It
-  does not open, inspect, record, or identify the contents of another app's audio.
-- The app contains no recorder, audio-file writer, networking, analytics, ads,
-  crash-reporting SDK, account system, or third-party dependency.
-- The macOS App Sandbox grants microphone input and nothing else. In particular,
-  it omits both incoming and outgoing network entitlements and all user-file
-  access entitlements.
-- The only persisted values are the numeric dBFS calibration baseline and UI
-  preferences in `UserDefaults`. Voice and sound data are never persisted.
-- `PrivacyInfo.xcprivacy` declares no tracking and no collected data types.
+Calibration uses a monotonic eight-second timer, so progress remains accurate
+if Core Audio changes buffer sizes or briefly stalls. The setup screen shows the
+live input level and distinguishes between no microphone frames and a signal
+that is simply too quiet.
 
-Every Xcode build runs `scripts/verify_privacy.sh`. The build fails if network,
-recording, transcription, analytics APIs, or forbidden entitlements appear.
-`scripts/audit_release.sh` separately audits the final signed app’s entitlements,
-linked frameworks, undefined symbols, privacy manifest, and code signature.
+Microphone startup runs on a dedicated control queue with a watchdog, preventing
+a stalled audio-device connection from freezing the interface. LoudMouth binds
+the selected microphone through AVFoundation’s capture-device API and receives
+PCM sample buffers directly.
 
-## Test from the command line
+## Build and test
 
 ```sh
+xcodebuild -project LoudMouth.xcodeproj -scheme LoudMouth \
+  -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO build
+
 xcodebuild -project LoudMouth.xcodeproj -scheme LoudMouth \
   -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO test
 
 ./scripts/verify_privacy.sh
 ./scripts/audit_release.sh /path/to/LoudMouth.app
 ```
+
+LoudMouth requires macOS 14 or later and uses SwiftUI, AppKit, AVFoundation,
+Core Audio, and ServiceManagement—no cross-platform UI framework.
