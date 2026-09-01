@@ -62,7 +62,8 @@ LoudMouth’s Settings window is intentionally compact:
 - **Launch LoudMouth at login** uses macOS’s native login-item service. It
   reflects the actual macOS registration state rather than a saved preference.
 - **Startup & energy** controls the headphone-call-aware monitoring mode.
-- **Voice reminders** controls sensitivity: moving right reaches yellow and red
+- The **Natural → Reminder** meter in the menu-bar popover is also the
+  sensitivity control: drag its black marker right to reach yellow and red
   sooner.
 - **Microphone & calibration** lets you choose any available input for
   loudness monitoring, shows the active input, and lets you reset your

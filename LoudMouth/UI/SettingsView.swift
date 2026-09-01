@@ -57,39 +57,6 @@ struct SettingsView: View {
                 }
             }
 
-            SettingsCard("Voice reminders", symbol: "waveform") {
-                HStack(alignment: .center, spacing: 14) {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Sensitivity")
-                        Text("Move right to reach yellow and red sooner")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                    .frame(width: 190, alignment: .leading)
-
-                    VStack(spacing: 2) {
-                        Slider(
-                            value: Binding(
-                                get: { settings.sensitivity },
-                                set: { settings.sensitivity = $0 }
-                            ),
-                            in: 0...1
-                        )
-                        HStack {
-                            Text("Less")
-                            Spacer()
-                            Text("More")
-                        }
-                        .font(.system(size: 9))
-                        .foregroundStyle(.tertiary)
-                    }
-
-                    Text(settings.sensitivityLabel)
-                        .font(.caption.weight(.semibold))
-                        .frame(width: 48, alignment: .trailing)
-                }
-            }
-
             SettingsCard("Microphone & calibration", symbol: "mic") {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Loudness monitoring microphone")
@@ -143,7 +110,7 @@ struct SettingsView: View {
             PrivacyGuarantee()
         }
         .padding(24)
-        .frame(width: 620, height: 680, alignment: .top)
+        .frame(width: 620, height: 620, alignment: .top)
         .navigationTitle("LoudMouth Settings")
         .onAppear {
             refreshMicrophoneDevices()

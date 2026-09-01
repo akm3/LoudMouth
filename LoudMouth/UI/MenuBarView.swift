@@ -354,9 +354,13 @@ private struct MonitoringView: View {
 
             RelativeMeter(
                 progress: isInactive ? 0 : model.meterProgress,
-                thresholdPosition: 0.70,
+                sensitivity: Binding(
+                    get: { model.settings.sensitivity },
+                    set: { model.settings.sensitivity = $0 }
+                ),
                 tint: tint
             )
+            .help("Drag the black marker right to receive reminders sooner.")
 
             HStack(spacing: 10) {
                 Button {

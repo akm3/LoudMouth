@@ -100,8 +100,9 @@ private struct WaveformGlyph: View {
 
 struct RelativeMeter: View {
     let progress: Double
-    let thresholdPosition: Double
+    @Binding var sensitivity: Double
     let tint: Color
+    @State private var isAdjustingSensitivity = false
 
     var body: some View {
         VStack(spacing: 7) {
@@ -123,11 +124,24 @@ struct RelativeMeter: View {
                     .clipShape(Capsule())
 
                     Circle()
-                        .fill(.background)
-                        .overlay(Circle().stroke(.primary.opacity(0.25), lineWidth: 1))
-                        .frame(width: 9, height: 9)
-                        .offset(x: geometry.size.width * thresholdPosition - 4.5)
+                        .fill(.black.opacity(0.82))
+                        .overlay(Circle().stroke(.white.opacity(0.48), lineWidth: 1))
+                        .frame(width: 11, height: 11)
+                        .offset(x: geometry.size.width * sensitivity - 5.5)
+                        .scaleEffect(isAdjustingSensitivity ? 1.22 : 1)
+                        .shadow(color: .black.opacity(0.22), radius: 1.5, y: 0.5)
                 }
+                .contentShape(Rectangle())
+                .gesture(
+                    DragGesture(minimumDistance: 0)
+                        .onChanged { value in
+                            isAdjustingSensitivity = true
+                            sensitivity = position(for: value.location.x, width: geometry.size.width)
+                        }
+                        .onEnded { _ in
+                            isAdjustingSensitivity = false
+                        }
+                )
             }
             .frame(height: 9)
 
@@ -141,7 +155,31 @@ struct RelativeMeter: View {
         }
         .frame(maxWidth: 286)
         .animation(.smooth(duration: 0.25), value: progress)
-        .accessibilityLabel("Relative voice meter")
-        .accessibilityValue("\(Int(progress * 100)) percent")
+        .animation(.smooth(duration: 0.14), value: sensitivity)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Voice level and reminder sensitivity")
+        .accessibilityValue("\(Int(progress * 100)) percent voice level, \(sensitivityLabel) sensitivity")
+        .accessibilityHint("Drag the black marker right to receive reminders sooner.")
+        .accessibilityAdjustableAction { direction in
+            switch direction {
+            case .increment:
+                sensitivity = min(sensitivity + 0.05, 1)
+            case .decrement:
+                sensitivity = max(sensitivity - 0.05, 0)
+            @unknown default:
+                break
+            }
+        }
+    }
+
+    private var sensitivityLabel: String {
+        if sensitivity >= 0.67 { return "high" }
+        if sensitivity >= 0.34 { return "medium" }
+        return "low"
+    }
+
+    private func position(for horizontalLocation: CGFloat, width: CGFloat) -> Double {
+        guard width > 0 else { return sensitivity }
+        return min(max(horizontalLocation / width, 0), 1)
     }
 }
