@@ -25,6 +25,7 @@ final class AppSettings: ObservableObject {
         static let voiceFocus = "voiceFocus"
         static let showOverlay = "showOverlay"
         static let preferBuiltIn = "preferBuiltInMicrophone"
+        static let preferredMicrophoneUID = "preferredMicrophoneUID"
         static let monitorOnlyDuringHeadphoneCalls = "monitorOnlyDuringHeadphoneCalls"
         static let baseline = "baselineDecibelsFS"
     }
@@ -54,8 +55,14 @@ final class AppSettings: ObservableObject {
     @Published var showOverlay: Bool {
         didSet { defaults.set(showOverlay, forKey: Key.showOverlay) }
     }
-    @Published var preferBuiltInMicrophone: Bool {
-        didSet { defaults.set(preferBuiltInMicrophone, forKey: Key.preferBuiltIn) }
+    @Published var preferredMicrophoneUID: String? {
+        didSet {
+            if let preferredMicrophoneUID {
+                defaults.set(preferredMicrophoneUID, forKey: Key.preferredMicrophoneUID)
+            } else {
+                defaults.removeObject(forKey: Key.preferredMicrophoneUID)
+            }
+        }
     }
     @Published var monitorOnlyDuringHeadphoneCalls: Bool {
         didSet {
@@ -98,8 +105,20 @@ final class AppSettings: ObservableObject {
             ? true : defaults.bool(forKey: Key.voiceFocus)
         showOverlay = defaults.object(forKey: Key.showOverlay) == nil
             ? true : defaults.bool(forKey: Key.showOverlay)
-        preferBuiltInMicrophone = defaults.object(forKey: Key.preferBuiltIn) == nil
-            ? true : defaults.bool(forKey: Key.preferBuiltIn)
+        if let savedMicrophoneUID = defaults.string(forKey: Key.preferredMicrophoneUID) {
+            preferredMicrophoneUID = savedMicrophoneUID
+        } else if defaults.object(forKey: Key.preferBuiltIn) != nil,
+                  !defaults.bool(forKey: Key.preferBuiltIn),
+                  let defaultInputID = AudioInputDevices.defaultInputID {
+            // Preserve the previous "use the Mac default" choice during the
+            // transition from the old built-in microphone toggle.
+            preferredMicrophoneUID = AudioInputDevices.all().first(where: {
+                $0.id == defaultInputID
+            })?.uid
+        } else {
+            // No stored choice means built-in, selected by the capture layer.
+            preferredMicrophoneUID = nil
+        }
         monitorOnlyDuringHeadphoneCalls = defaults.object(
             forKey: Key.monitorOnlyDuringHeadphoneCalls
         ) == nil

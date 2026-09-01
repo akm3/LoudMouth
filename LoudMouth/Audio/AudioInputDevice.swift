@@ -75,9 +75,12 @@ enum AudioInputDevices {
         return status == noErr ? deviceID : nil
     }
 
-    static func preferred(preferBuiltIn: Bool) -> AudioInputDevice? {
+    static func preferred(uid: String?) -> AudioInputDevice? {
         let devices = all()
-        if preferBuiltIn, let builtIn = devices.first(where: \.isBuiltIn) {
+        if let uid, let selected = devices.first(where: { $0.uid == uid }) {
+            return selected
+        }
+        if let builtIn = devices.first(where: \.isBuiltIn) {
             return builtIn
         }
         if let defaultInputID,

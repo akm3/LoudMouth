@@ -5,6 +5,7 @@ struct SettingsView: View {
     @EnvironmentObject private var model: AppModel
     @EnvironmentObject private var settings: AppSettings
     @StateObject private var launchAtLogin = LoginItemController()
+    @State private var microphoneDevices: [AudioInputDevice] = []
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
@@ -90,7 +91,22 @@ struct SettingsView: View {
             }
 
             SettingsCard("Microphone & calibration", symbol: "mic") {
-                Toggle("Prefer the Mac’s built-in microphone", isOn: $settings.preferBuiltInMicrophone)
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Loudness monitoring microphone")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+
+                    Picker("Loudness monitoring microphone", selection: selectedMicrophoneUID) {
+                        ForEach(microphoneDevices) { device in
+                            Text(device.isBuiltIn ? "\(device.name) (Built-in)" : device.name)
+                                .tag(device.uid)
+                        }
+                    }
+                    .labelsHidden()
+                    .pickerStyle(.menu)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .disabled(microphoneDevices.isEmpty)
+                }
 
                 HStack {
                     Text("Currently using")
@@ -129,9 +145,28 @@ struct SettingsView: View {
         .padding(24)
         .frame(width: 620, height: 680, alignment: .top)
         .navigationTitle("LoudMouth Settings")
-        .onChange(of: settings.preferBuiltInMicrophone) {
+        .onAppear {
+            refreshMicrophoneDevices()
+        }
+        .onChange(of: settings.preferredMicrophoneUID) {
             model.refreshInputDevice()
         }
+    }
+
+    private var selectedMicrophoneUID: Binding<String> {
+        Binding(
+            get: {
+                settings.preferredMicrophoneUID
+                    ?? microphoneDevices.first(where: \.isBuiltIn)?.uid
+                    ?? microphoneDevices.first?.uid
+                    ?? ""
+            },
+            set: { settings.preferredMicrophoneUID = $0 }
+        )
+    }
+
+    private func refreshMicrophoneDevices() {
+        microphoneDevices = AudioInputDevices.all()
     }
 }
 

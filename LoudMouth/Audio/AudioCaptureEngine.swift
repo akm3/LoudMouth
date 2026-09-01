@@ -52,12 +52,10 @@ final class AudioCaptureEngine: NSObject, AVCaptureAudioDataOutputSampleBufferDe
     }
 
     @discardableResult
-    func start(preferBuiltInMicrophone: Bool) throws -> AudioInputDevice {
+    func start(preferredMicrophoneUID: String?) throws -> AudioInputDevice {
         stop()
 
-        let coreAudioDevice = AudioInputDevices.preferred(
-            preferBuiltIn: preferBuiltInMicrophone
-        )
+        let coreAudioDevice = AudioInputDevices.preferred(uid: preferredMicrophoneUID)
         guard let captureDevice = captureDevice(matching: coreAudioDevice) else {
             throw CaptureError.noInput
         }

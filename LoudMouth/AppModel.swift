@@ -339,7 +339,7 @@ final class AppModel: ObservableObject {
         cancelAutomaticSleep()
         captureOperationID &+= 1
         let operationID = captureOperationID
-        let preferBuiltInMicrophone = settings.preferBuiltInMicrophone
+        let preferredMicrophoneUID = settings.preferredMicrophoneUID
         let engine = captureEngine
 
         processor.reset(baselineDecibelsFS: settings.baselineDecibelsFS)
@@ -350,7 +350,7 @@ final class AppModel: ObservableObject {
 
         captureControlQueue.async { [weak self] in
             let result = Result {
-                try engine.start(preferBuiltInMicrophone: preferBuiltInMicrophone)
+                try engine.start(preferredMicrophoneUID: preferredMicrophoneUID)
             }
             DispatchQueue.main.async {
                 guard let self, self.captureOperationID == operationID else { return }

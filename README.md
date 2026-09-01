@@ -17,7 +17,8 @@ getting louder, and red when you have crossed your personal threshold.
 - Provides a menu-bar status icon and a brief visual reminder when you are too
   loud.
 - Lets you adjust sensitivity so yellow and red arrive sooner or later.
-- Prefers the Mac’s built-in microphone, even while headphones are connected.
+- Lets you choose the microphone used for loudness monitoring; the Mac’s
+  built-in microphone is the default.
 - Sleeps when you are not on a headphone call, then resumes monitoring when a
   local call-activity signal is present.
 - Can launch automatically when you sign in to your Mac.
@@ -63,7 +64,8 @@ LoudMouth’s Settings window is intentionally compact:
 - **Startup & energy** controls the headphone-call-aware monitoring mode.
 - **Voice reminders** controls sensitivity: moving right reaches yellow and red
   sooner.
-- **Microphone & calibration** shows the current input and lets you reset your
+- **Microphone & calibration** lets you choose any available input for
+  loudness monitoring, shows the active input, and lets you reset your
   baseline.
 - The full privacy guarantee stays visible at the bottom of the window.
 
