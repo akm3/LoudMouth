@@ -7,8 +7,10 @@ struct SettingsView: View {
     @StateObject private var launchAtLogin = LoginItemController()
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack(alignment: .firstTextBaseline) {
+        VStack(alignment: .leading, spacing: 18) {
+            HStack(alignment: .center, spacing: 12) {
+                AppIconMark(size: 48)
+
                 VStack(alignment: .leading, spacing: 3) {
                     Text("LoudMouth Settings")
                         .font(.system(size: 22, weight: .semibold, design: .rounded))
@@ -120,12 +122,12 @@ struct SettingsView: View {
                 }
             }
 
-            Spacer(minLength: 0)
+            Spacer(minLength: 10)
 
             PrivacyGuarantee()
         }
-        .padding(20)
-        .frame(width: 560, height: 560, alignment: .top)
+        .padding(24)
+        .frame(width: 620, height: 680, alignment: .top)
         .navigationTitle("LoudMouth Settings")
         .onChange(of: settings.preferBuiltInMicrophone) {
             model.refreshInputDevice()
@@ -150,28 +152,50 @@ private struct SettingsCard<Content: View>: View {
                 .font(.system(size: 13, weight: .semibold))
             content
         }
-        .padding(14)
-        .background(.primary.opacity(0.045), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .padding(15)
+        .background(.primary.opacity(0.045), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 }
 
 private struct PrivacyGuarantee: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack(spacing: 8) {
-                PrivacyBadge(symbol: "memorychip", title: "Memory only")
-                PrivacyBadge(symbol: "network.slash", title: "No network")
-                PrivacyBadge(symbol: "waveform.slash", title: "No recordings")
-                Spacer()
-            }
+        HStack(alignment: .center, spacing: 14) {
+            AppIconMark(size: 42)
+                .padding(8)
+                .background(.green.opacity(0.09), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
 
-            Text("Privacy guarantee: live microphone samples are measured in memory and immediately discarded. LoudMouth never stores or transcribes audio; only a numeric calibration level and your preferences are saved.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+            VStack(alignment: .leading, spacing: 9) {
+                Label("Private by design", systemImage: "lock.shield.fill")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(.green)
+
+                Text("Live microphone samples are measured in memory and immediately discarded. Nothing is recorded, transcribed, or sent off this Mac.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
+
+                HStack(spacing: 8) {
+                    PrivacyBadge(symbol: "memorychip", title: "Memory only")
+                    PrivacyBadge(symbol: "network.slash", title: "No network")
+                    PrivacyBadge(symbol: "waveform.slash", title: "No recordings")
+                    Spacer()
+                }
+            }
         }
-        .padding(14)
-        .background(.green.opacity(0.065), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .padding(16)
+        .background(.green.opacity(0.065), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+}
+
+private struct AppIconMark: View {
+    let size: CGFloat
+
+    var body: some View {
+        Image(nsImage: NSApplication.shared.applicationIconImage)
+            .resizable()
+            .interpolation(.high)
+            .scaledToFit()
+            .frame(width: size, height: size)
     }
 }
 
